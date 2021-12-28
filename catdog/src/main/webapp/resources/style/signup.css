@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+#signup1 {
+	margin:40px auto;
+}
+#signup1 span {
+	font-size:0.8em;
+}
+#signup1 h5 {
+	margin:20px 0 10px;
+}
+#signup1 textarea {
+	width:100%;
+	height:250px;
+	font-size:0.8em;
+	border:0;
+	background-color:#F9F9F9;
+	resize:none;
+}
+#signup1 textarea:focus {
+	outline:none;
+}
+#signup1 input {
+	transform:translate(0%, 25%);
+}
+#signup1 button {
+	display:block;
+	width:20%;
+	margin:30px auto 80px;
+}
+
+
+#signup2 h3 {
+	text-align : center;
+	margin:30px 0 30px;
+}
+#signup2 span {
+	color:red;
+}
+#signup2 p {
+	margin:0 0 5px;
+}
+#signup2 .text-field {
+	font-size : 14px;
+	margin-bottom : 15px;
+	border: #888888 1px solid;
+	border-color : black;
+	border-radius : 11px;
+	
+	padding : 8px;
+	width : 250px;
+}
+
+#mail_verify_check, #mail_check {
+	font-size : 15px;
+	border-radius : 30px;
+	width : 90px;
+	height : 35px;
+}
+#signup2 #join-btn { 
+	border-radius : 30px;
+	width : 120px;
+	height : 35px;
+}

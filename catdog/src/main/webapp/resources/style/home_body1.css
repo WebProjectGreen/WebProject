@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+/* BODY MAIN */
+#body div {
+	justify-content:space-between;
+}
+#body p {
+	text-align:center;
+	font-size:1.5em;
+	margin:80px 0 0 0;
+	font-weight:bold;
+}
+#body > span {
+	display:block;
+	text-align:center;
+	margin:0 auto 40px;
+	color:gray;
+}
+
+/* Carousel */
+#body_carousel {
+	margin:0 0 80px 0;
+}
+
+/* Promotion, Category */
+#body_promotion > div {
+	width:650px;
+	height:250px;
+}
+#body_promotion > div:hover img {
+  	filter:brightness(70%);
+  	transition:filter 0.2s;
+}
+#body_category > div {
+	width:315px;
+	height:120px;
+}
+#body_category > div:hover img {
+  	filter:brightness(70%);
+  	transition:filter 0.2s;
+}
+
+/* BODY BOTTOM */
+#body_bottom {
+	background-color:#F9F9F9;
+	height:450px;
+}
+#body_bottom > div {
+	width:1320px;
+	height:100%;
+	margin:0 auto;
+	justify-content:space-between;
+}
+#body_bottom > div > div {
+	width:650px;
+	height:100%;
+	padding:40px 0;
+}
+#review {
+	width:100%;
+	height:75px;
+	padding:5px;
+}
+#review_img {
+	width:70px;
+	height:100%;
+	background-color:black;
+	border-radius:10px;
+}
+#body_bottom_promotion > div {
+	width:315px;
+	height:100%;
+	background-color:black;
+}
+
+/* BUTTON */
+#button_more {
+	margin:50px auto 120px;
+	width:150px;
+	border-radius:20px;
+	display:block;
+}
+
+/* ITEM */
+#item_box {
+	width:100%;
+	height:290px;
+	border-radius:10px;
+	background-color:black;
+	overflow:hidden;
+	position:relative;
+}
+#item_box img {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+#item_box_text {
+	width:80%;
+	font-size:0.9em;
+	color:white;
+	
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	position:absolute;
+	
+	text-align:center;
+	
+	opacity:0;
+}
+#item_box_text strong {
+	font-size:1.2em;
+}
+#item_text {
+	margin:10px 0 0 0;
+	width:100%;
+	font-size:0.8em;
+	color:#3A3A3A;
+}
+#item_text > span {
+	font-size:1.2em;
+	font-weight:bold;
+	color:black;
+}
+
+/* ITEMBOX */
+#item_hot > div > div {
+	width:315px;
+}
+#item_new > div > div {
+	width:315px;
+}
+#item_new hr {
+	margin:10px 0;
+}
+
+#item_hot #item_box:hover img {
+	transform:scale(1.1);
+  	transition:transform 0.5s;
+  	filter:brightness(50%);
+}
+#item_hot #item_box:hover #item_box_text {
+	z-index:2;
+	opacity:1;
+	transition:opacity 0.5s;
+	
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+#item_new #item_box:hover img {
+	transform:scale(1.1);
+  	transition:transform 0.5s;
+}
+
+#body_bottom_promotion img {
+	border:1px solid lightgray;
+}

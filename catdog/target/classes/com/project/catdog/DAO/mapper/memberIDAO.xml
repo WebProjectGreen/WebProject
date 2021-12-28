@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper문서형식 지정 -->
+<!DOCTYPE mapper    
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.project.catdog.DAO.MemberIDAO">
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	
+	<select id="mailverifyCheck" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_USER WHERE USER_EMAIL = #{user_email}
+	</select>
+	
+	<insert id="signup" parameterType="com.project.catdog.DTO.UserDTO">
+		INSERT INTO CATDOG_USER (USER_ID, USER_PW, USER_EMAIL, USER_NAME, USER_BIRTH, USER_SEX, USER_SINCE)
+		VALUES (#{user_id}, #{user_pw}, #{user_email}, #{user_name}, #{user_birth, jdbcType=VARCHAR}, #{user_sex}, SYSDATE)
+	</insert>
+	
+	<select id="forgetUser" parameterType="com.project.catdog.DTO.UserDTO" resultType="com.project.catdog.DTO.UserDTO">
+		SELECT * FROM CATDOG_USER WHERE USER_NAME = #{user_name} AND USER_BIRTH = #{user_birth}
+	</select>
+	
+	<select id="forgetEmail" parameterType="com.project.catdog.DTO.UserDTO" resultType="com.project.catdog.DTO.UserDTO">
+		SELECT * FROM CATDOG_USER WHERE USER_EMAIL = #{user_email}
+	</select>
+	
+	<select id="login" parameterType="String" resultType="com.project.catdog.DTO.UserDTO">
+		SELECT * FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	
+	<update id="PwUpdate" parameterType="com.project.catdog.DTO.UserDTO">
+		UPDATE MVC_BOARD SET USER_PW=#{user_pw}
+		WHERE USER_ID = #{user_id}, USER_NAME = #{user_name}, USER_NAME = #{user_name}
+	</update>
+
+	<update id="modify" parameterType="com.project.catdog.DTO.UserDTO">
+		UPDATE MVC_BOARD SET USER_NAME = #{user_name}, USER_BIRTH = #{user_birth}, USER_SEX = #{user_sex}
+		WHERE USER_NAME = #{user_name}, USER_BIRTH = #{user_birth}, USER_SEX = #{user_sex}
+	</update>
+	
+	<!-- 상품 등록 -->
+	<insert id="prp" parameterType="com.project.catdog.DTO.ProductDTO">
+		INSERT INTO CATDOG_PRODUCT (P_CODE, P_CATEGORY, P_NAME, P_O_PRICE, P_DELIVERY, P_SALE, P_A_PRICE, P_STOCK, P_BUY, P_CONTENT, P_MAINIMG, P_SUBIMG, P_DATE)
+		VALUES (#{p_code}, #{p_category}, #{p_name}, #{p_o_price}, #{p_delivery}, #{p_sale}, #{p_a_price}, #{p_stock}, #{p_buy}, #{p_content}, #{p_mainimg}, #{p_subimg}, SYSDATE)
+	</insert>
+	
+	<!-- 상품 관리 정렬 -->
+	<select id="productlistAll_ASC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} ASC) as rNUM
+		    FROM CATDOG_PRODUCT a) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} ASC
+	</select>
+	<select id="productlistAll_DESC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} DESC) as rNUM
+		    FROM CATDOG_PRODUCT a) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} DESC
+	</select>
+	<select id="productlist_ASC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} ASC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_CATEGORY = #{category}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} ASC
+	</select>
+	<select id="productlist_DESC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} DESC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_CATEGORY = #{category}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} DESC
+	</select>
+	<select id="productlistAll_ASC_LIKE" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} ASC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_NAME LIKE #{sName}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} ASC
+	</select>
+	<select id="productlistAll_DESC_LIKE" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} DESC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_NAME LIKE #{sName}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} DESC
+	</select>
+	<select id="productlist_ASC_LIKE" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">	
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} ASC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_NAME LIKE #{sName} AND P_CATEGORY = #{category}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} ASC
+	</select>
+	<select id="productlist_DESC_LIKE" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT x.* FROM (
+		    SELECT a.*, ROW_NUMBER() OVER (ORDER BY ${sort1} DESC) as rNUM
+		    FROM CATDOG_PRODUCT a WHERE P_NAME LIKE #{sName} AND P_CATEGORY = #{category}) x
+		        WHERE rNUM between #{rowStart} and #{rowEnd}
+		        ORDER BY ${sort1} DESC
+	</select>
+	
+	<select id="p_update_list" parameterType="String" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+	
+	<!-- 상품 개수 체크 -->
+	<select id="ProductCount_total" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT
+	</select>
+	<select id="ProductCount_fashion" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = 'fashion'
+	</select>
+	<select id="ProductCount_walk" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = 'walk'
+	</select>
+	<select id="ProductCount_food" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = 'food'
+	</select>
+	<select id="ProductCount_cat" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = 'cat'
+	</select>
+	<select id="ProductCount_dog" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = 'dog'
+	</select>
+	
+	<!-- 상품 검색 개수 체크 -->
+	<select id="productlistCount_All" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_NAME LIKE #{sName}
+	</select>
+	<select id="productlistCount" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_NAME LIKE #{sName} AND P_CATEGORY = #{category}
+	</select>
+
+	
+	<!-- 메인,서브 이미지가 둘다 없을 때 -->
+	<update id="p_update_1" parameterType="com.project.catdog.DTO.ProductlistDTO">
+		UPDATE CATDOG_PRODUCT 
+		SET P_CATEGORY = #{p_category}, P_NAME = #{p_name}, P_O_PRICE = #{p_o_price}, P_DELIVERY = #{p_delivery}, P_SALE = #{p_sale},
+		P_A_PRICE = #{p_a_price}, P_STOCK = #{p_stock}, P_CONTENT = #{p_content}
+		WHERE P_CODE = #{p_code}
+	</update>
+	<!-- 메인 이미지만 있을 때 -->
+	<update id="p_update_2" parameterType="com.project.catdog.DTO.ProductlistDTO">
+		UPDATE CATDOG_PRODUCT 
+		SET P_CATEGORY = #{p_category}, P_NAME = #{p_name}, P_O_PRICE = #{p_o_price}, P_DELIVERY = #{p_delivery}, P_SALE = #{p_sale},
+		P_A_PRICE = #{p_a_price}, P_STOCK = #{p_stock}, P_CONTENT = #{p_content}, P_MAINIMG = #{p_mainimg}
+		WHERE P_CODE = #{p_code}
+	</update>
+	<!-- 서브 이미지만 있을 때 -->
+	<update id="p_update_3" parameterType="com.project.catdog.DTO.ProductlistDTO">
+		UPDATE CATDOG_PRODUCT 
+		SET P_CATEGORY = #{p_category}, P_NAME = #{p_name}, P_O_PRICE = #{p_o_price}, P_DELIVERY = #{p_delivery}, P_SALE = #{p_sale},
+		P_A_PRICE = #{p_a_price}, P_STOCK = #{p_stock}, P_CONTENT = #{p_content}, P_SUBIMG = #{p_subimg}
+		WHERE P_CODE = #{p_code}
+	</update>
+	<!-- 메인,서브 이미지 둘다 있을 때 -->
+	<update id="p_update_4" parameterType="com.project.catdog.DTO.ProductlistDTO">
+		UPDATE CATDOG_PRODUCT 
+		SET P_CATEGORY = #{p_category}, P_NAME = #{p_name}, P_O_PRICE = #{p_o_price}, P_DELIVERY = #{p_delivery}, P_SALE = #{p_sale},
+		P_A_PRICE = #{p_a_price}, P_STOCK = #{p_stock}, P_CONTENT = #{p_content}, P_MAINIMG = #{p_mainimg}, P_SUBIMG = #{p_subimg}
+		WHERE P_CODE = #{p_code}
+	</update>
+	
+	<!-- 상품삭제 -->
+	<delete id="p_delete" parameterType="String">
+		DELETE FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</delete>
+	
+	<!-- 아이템카운트 -->
+	<select id="itemCount" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_CATEGORY = #{category}
+	</select>
+	
+	<!-- 아이템목록 -->
+	<select id="item" parameterType="String" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_CATEGORY = #{category} ORDER BY P_CODE DESC
+	</select>
+	
+	<!-- 아이템정렬 -->
+	<select id="itemsort_DESC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_CATEGORY = #{category} ORDER BY ${sort1} DESC
+	</select>
+	<select id="itemsort_ASC" parameterType="com.project.catdog.DTO.ProductlistDTO" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_CATEGORY = #{category} ORDER BY ${sort1} ASC
+	</select>
+	
+	<!-- 상품상세페이지 -->
+	<select id="itemviews" parameterType="String" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+		
+	<!-- 아이템검색 -->
+	<select id="itemsearch" parameterType="String" resultType="com.project.catdog.DTO.ProductDTO">
+		SELECT * FROM CATDOG_PRODUCT WHERE P_NAME LIKE #{search}
+	</select>
+	<!-- 아이템검색카운트 -->
+	<select id="itemsearchCount" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_PRODUCT WHERE P_NAME LIKE #{search}
+	</select>
+	
+	<!-- pw확인 -->
+	<select id="pwcheck" parameterType="String" resultType="String">
+		SELECT USER_PW FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 유저확인 -->
+	<select id="userSearch" parameterType="String" resultType="com.project.catdog.DTO.UserDTO">
+		SELECT * FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 유저배송지확인 -->
+	<select id="addressSearch" parameterType="String" resultType="com.project.catdog.DTO.AddressDTO">
+		SELECT * FROM CATDOG_ADDRESS WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 유저생일 -->
+	<select id="userBirth" parameterType="String" resultType="String">
+		SELECT TO_CHAR(USER_BIRTH, 'YYYY/MM/DD') FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 이메일변경 -->
+	<update id="update_email" parameterType="String">
+		UPDATE CATDOG_USER SET USER_EMAIL = #{user_email} WHERE USER_ID = #{user_id}
+	</update>
+	<!-- 중복주소 확인 -->
+	<select id="selectAddress" parameterType="com.project.catdog.DTO.AddressDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_ADDRESS WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 주소작성(update) -->
+	<update id="saveAddress_update" parameterType="com.project.catdog.DTO.AddressDTO">
+		UPDATE CATDOG_ADDRESS SET ADDRESS_TO = #{address_to}, ZIP_CODE = #{zip_code}, ADDRESS_MAIN = #{address_main}, ADDRESS_SUB = #{address_sub}, MESSAGE = #{message}
+		WHERE USER_ID = #{user_id}
+	</update>
+	<!-- 주소작성(insert) -->
+	<insert id="saveAddress_insert" parameterType="com.project.catdog.DTO.AddressDTO">
+		INSERT INTO CATDOG_ADDRESS (USER_ID, ADDRESS_TO, ZIP_CODE, ADDRESS_MAIN, ADDRESS_SUB, MESSAGE)
+		VALUES (#{user_id}, #{address_to}, #{zip_code}, #{address_main}, #{address_sub}, #{message})
+	</insert>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="delete_address" parameterType="String">
+		delete from CATDOG_ADDRESS where USER_ID = #{user_id}
+	</delete>
+	<delete id="delete_cart" parameterType="String">
+		delete from CATDOG_CART where USER_ID = #{user_id}
+	</delete>
+	<delete id="delete_user" parameterType="String">
+		delete from CATDOG_USER where USER_ID = #{user_id}
+	</delete>
+	
+	<!-- 장바구니담기 -->
+	<insert id="addcart" parameterType="com.project.catdog.DTO.CartDTO">
+		INSERT INTO CATDOG_CART (P_CODE, USER_ID, CART_NAME, CART_PRICE, CART_DELIVERY, CART_SALE, CART_EA)
+		VALUES (#{p_code}, #{user_id}, #{cart_name}, #{cart_price}, #{cart_delivery}, #{cart_sale}, #{cart_ea})
+	</insert>
+	<!-- 장바구니중복검사 -->
+	<select id="verifycart" parameterType="com.project.catdog.DTO.CartDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_CART WHERE USER_ID = #{user_id} AND P_CODE = #{p_code}
+	</select>
+	<!-- 장바구니삭제 -->
+	<delete id="deletecart" parameterType="com.project.catdog.DTO.CartDTO">
+		DELETE FROM CATDOG_CART WHERE USER_ID = #{user_id} AND P_CODE = #{p_code}
+	</delete>
+	
+	<!-- 회원정보 수정 실행 -->
+	<update id="userUpdate" parameterType="com.project.catdog.DTO.UserDTO">
+		UPDATE CATDOG_USER SET USER_NAME = #{user_name}, USER_BIRTH = #{user_birth, jdbcType=VARCHAR}, USER_SEX = #{user_sex} WHERE USER_ID = #{user_id}
+	</update>
+	
+	<!-- 비밀번호 찾기 후에 비밀번호 변경 실행 -->
+	<update id="pwChgUp" parameterType="com.project.catdog.DTO.UserDTO">
+		UPDATE CATDOG_USER SET USER_PW = #{user_pw} WHERE USER_ID = #{user_id}
+	</update>
+	
+	<select id="mypageUser" parameterType="com.project.catdog.DTO.UserDTO" resultType="com.project.catdog.DTO.UserDTO">
+		SELECT * FROM CATDOG_USER WHERE USER_ID = #{user_id}
+	</select>
+	
+	<!-- 주문 상품 등록 -->
+	<insert id="set_order_item" parameterType="com.project.catdog.DTO.OrderItemDTO">
+		INSERT INTO CATDOG_ORDER_ITEM (ORDER_NUM, P_CODE, ORDER_PRICE, ORDER_STOCK)
+		VALUES (#{order_num}, #{p_code}, #{order_price}, #{order_stock})
+	</insert>
+	<!-- 주문 등록 -->
+	<insert id="set_order" parameterType="com.project.catdog.DTO.OrderDTO">
+		INSERT INTO CATDOG_ORDER (ORDER_NUM, USER_ID, ORDER_TO, ORDER_ADDRESS, ORDER_MESSAGE, ORDER_DELIVERY, ORDER_TOTAL, ORDER_BANKNAME, ORDER_STATE, ORDER_DATE)
+		VALUES (#{order_num}, #{user_id}, #{order_to}, #{order_address}, #{order_message}, #{order_delivery}, #{order_total}, #{order_bankname}, #{order_state}, SYSDATE)
+	</insert>
+	
+	<!-- 해당 유저 주문목록 검색 -->
+	<select id="order_select_all" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID = #{user_id} ORDER BY ORDER_NUM DESC
+	</select>
+	<select id="order_select" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID = #{user_id} AND ORDER_STATE = #{state} ORDER BY ORDER_NUM DESC
+	</select>
+	<!-- 주문 p_code 가져오기 -->
+	<select id="order_p_code" parameterType="String" resultType="String">
+		SELECT P_CODE FROM CATDOG_ORDER_ITEM WHERE ORDER_NUM = #{order_num}
+	</select>
+	<!-- 주문 p_name 가져오기 -->
+	<select id="order_p_name" parameterType="String" resultType="String">
+		SELECT P_NAME FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+	<!-- 주문 p_img 가져오기 -->
+	<select id="order_p_img" parameterType="String" resultType="String">
+		SELECT P_MAINIMG FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+	<!-- 주문 p_stock 가져오기 -->
+	<select id="order_p_stock" parameterType="String" resultType="Integer">
+		SELECT ORDER_STOCK FROM CATDOG_ORDER_ITEM WHERE ORDER_NUM = #{order_num}
+	</select>
+	<!-- 주문정보 가져오기 -->
+	<select id="order_info" parameterType="String" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE ORDER_NUM = #{order_num}
+	</select>
+	<!-- 주문 아이템정보 가져오기 -->
+	<select id="order_info_item" parameterType="String" resultType="com.project.catdog.DTO.OrderItemDTO">
+		SELECT * FROM CATDOG_ORDER_ITEM WHERE ORDER_NUM = #{order_num}
+	</select>
+	<!-- 주문 상세정보 이미지 가져오기 -->
+	<select id="order_info_img" parameterType="String" resultType="String">
+		SELECT P_MAINIMG FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+	<!-- 주문 상세정보 이름 가져오기 -->
+	<select id="order_info_name" parameterType="String" resultType="String">
+		SELECT P_NAME FROM CATDOG_PRODUCT WHERE P_CODE = #{p_code}
+	</select>
+	<!-- 주문 카운트 -->
+	<select id="order_count_user_all" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_ORDER WHERE USER_ID = #{user_id}
+	</select>
+	<select id="order_count_user" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="int">
+		SELECT count(*) FROM CATDOG_ORDER WHERE USER_ID = #{user_id} AND ORDER_STATE = #{state}
+	</select>
+	
+	<!-- 어드민 주문검색 -->
+	<select id="order_search_all_DESC" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID LIKE #{user_id} ORDER BY ${sort} DESC
+	</select>
+	<select id="order_search_all_ASC" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID LIKE #{user_id} ORDER BY ${sort} ASC
+	</select>
+	<select id="order_search_DESC" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID LIKE #{user_id} AND ORDER_STATE = #{state} ORDER BY ${sort} DESC
+	</select>
+	<select id="order_search_ASC" parameterType="com.project.catdog.DTO.OrderlistDTO" resultType="com.project.catdog.DTO.OrderDTO">
+		SELECT * FROM CATDOG_ORDER WHERE USER_ID LIKE #{user_id} AND ORDER_STATE = #{state} ORDER BY ${sort} ASC
+	</select>
+	
+	<!-- 어드민 배송상태 변경 -->
+	<update id="order_state_update" parameterType="com.project.catdog.DTO.OrderDTO">
+		UPDATE CATDOG_ORDER SET ORDER_STATE = #{order_state} WHERE ORDER_NUM = #{order_num}
+	</update>
+	
+	<!-- 어드민 배송상태 카운트 -->
+	<select id="order_count_admin_all" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_ORDER
+	</select>
+	<select id="order_count_admin" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_ORDER WHERE ORDER_STATE = #{state}
+	</select>
+	
+	<!-- 구매확정 -->
+	<update id="order_complete" parameterType="String">
+		UPDATE CATDOG_ORDER SET ORDER_STATE = '구매확정' WHERE ORDER_NUM = #{order_num}
+	</update>
+	
+	<!-- 비밀번호 변경 유저아이디 이메일 일치여부 -->
+	<select id="email_idCheck" parameterType="String" resultType="int">
+		SELECT count(*) FROM CATDOG_USER WHERE USER_ID = #{user_id} AND USER_EMAIL = #{user_email}
+	</select>
+	
+	<!-- 장바구니 리스트 -->
+	<select id="cartlist" parameterType="String" resultType="com.project.catdog.DTO.CartDTO">
+		SELECT * FROM CATDOG_CART WHERE USER_ID = #{user_id}
+	</select>
+	<!-- 장바구니 > 주문결제 -->
+	<select id="paycart" parameterType="com.project.catdog.DTO.CartDTO" resultType="com.project.catdog.DTO.CartDTO">
+		SELECT * FROM CATDOG_CART WHERE USER_ID = #{user_id} AND P_CODE = #{p_code}
+	</select>
+	
+	<!-- 판매량 증가 -->
+	<update id="addbuy" parameterType="com.project.catdog.DTO.OrderItemDTO">
+		UPDATE CATDOG_PRODUCT SET P_BUY = P_BUY + ${order_stock} WHERE P_CODE = #{p_code}
+	</update>
+	<!-- 상품 구입시 재고 변동 -->
+	<update id="addstock" parameterType="com.project.catdog.DTO.OrderItemDTO">
+		UPDATE CATDOG_PRODUCT SET P_STOCK = P_STOCK - ${order_stock} WHERE P_CODE = #{p_code}
+	</update>
+
+</mapper>

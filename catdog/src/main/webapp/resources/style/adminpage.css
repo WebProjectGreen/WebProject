@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#header {
+position:fixed;
+background-color:#3C3E43;
+width:260px;
+text-align:center;
+}
+.button {
+width:100%;
+height:55px;
+padding:11px 0 0;
+display:block;
+text-decoration:none;
+color:white;
+}
+.button:hover {
+background-color:#5C5F65;
+text-decoration:none;
+color:white;
+}
+.button_logout {
+width:100%;
+height:55px;
+border:1px solid red;
+display:block;
+outline:none;
+text-decoration:none;
+color:red;
+background-color:transparent;
+background-image:none;
+}
+.button_logout:hover {
+background-color:#5C5F65;
+text-decoration:none;
+color:red;
+}

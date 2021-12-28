@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!--RWD first-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- 외부 Source 적용 -->
+<link href="../style/main.css" rel="stylesheet" type="text/css">
+<link href="../style/home_header.css" rel="stylesheet" type="text/css">
+<link href="../style/home_body.css" rel="stylesheet" type="text/css">
+<link href="../style/home_footer.css" rel="stylesheet" type="text/css">
+
+<title>HOME</title>
+</head>
+<body id="main">
+
+<div id="wrap">
+	<!-- HEADER -->
+	<div id="header">
+		<div id="header_top">
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+					<a href="#">로그인</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">마이페이지</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">문의하기</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">오시는길</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">고객센터</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">이벤트</a>
+				</li>
+			</ul>
+		</div>
+		<div id="header_mid">
+			<div id="header_mid_logo">
+				<a href="#">
+					<img src="../images/logo.svg" width="14%"/>
+				</a>
+			</div>
+			<div id="header_mid_sub">
+				<div id="header_mid_social">
+					<ul class="nav">
+						<li class="nav-item">
+							<a href="#">
+								<img src="../images/facebook_icon.svg" width="28px"/>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">
+								<img src="../images/instargram_icon.svg" width="28px"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="header_mid_search">
+					<form action="#">
+						<div id="header_mid_search_input">
+							<input type="text" placeholder="검색" name="search"/>
+						</div>
+						<button id="header_mid_search_button" type="submit">
+							<img src="../images/search_icon.svg" width="100%"/>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div id="header_bottom">
+			<ul class="nav">
+				<li class="nav-item">
+					<a href="#">의류/하네스</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">고양이</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">이동/산책</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">사료/간식</a>
+				</li>
+				<li class="nav-item">
+					<a href="#">강아지</a>
+				</li>
+			</ul>
+		</div>
+		<hr/>
+	</div>
+	
+	<!-- BODY -->
+	<div id="body">
+		<div id="body_carousel" class="carousel slide" data-ride="carousel" align="center">
+	
+			<ul class="carousel-indicators">
+				<li data-target="#body_carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#body_carousel" data-slide-to="1"></li>
+				<li data-target="#body_carousel" data-slide-to="2"></li>
+			</ul>
+		
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="https://www.w3schools.com/bootstrap4/la.jpg" width="100%" alt="Los Angles">
+				</div>
+				<div class="carousel-item">
+					<img src="https://www.w3schools.com/bootstrap4/chicago.jpg" width="100%" alt="Chicago">
+				</div>
+				<div class="carousel-item">
+					<img src="https://www.w3schools.com/bootstrap4/ny.jpg" width="100%" alt="New York">
+				</div>
+			</div>
+			
+			<a class="carousel-control-prev" href="#body_carousel" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#body_carousel" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+		<div id="body_promotion" class="d-flex mb-3">
+			<div class="bg-info">
+				프로모션 1
+				<a href="#"></a>
+			</div>
+			<div class="bg-warning">
+				프로모션 2
+				<a href="#"></a>
+			</div>
+		</div>
+		<div id="body_category" class="d-flex">
+			<div class="bg-info">
+				카테고리 1
+				<a href="#"></a>
+			</div>
+			<div class="bg-warning">
+				카테고리 2
+				<a href="#"></a>
+			</div>
+			<div class="bg-primary">
+				카테고리 3
+				<a href="#"></a>
+			</div>
+			<div class="bg-success">
+				카테고리 4
+				<a href="#"></a>
+			</div>
+		</div>
+		
+		<p>인기상품</p>
+		<span>HOT ITEM</span>
+		<div id="item_hot">
+			<div class="d-flex mb-3">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+				</div>
+			</div>
+			<button id="button_more" class="btn btn-outline-secondary">더보기</button>
+		</div>
+		
+		<p>신상품</p>
+		<span>NEW ITEM</span>
+		<div id="item_new">
+			<div class="d-flex mb-4">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 이비야야 대형견유모차 젠틀펫왜건 아미그린 25kg 탑승
+						<hr/>
+						<span>280,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<button id="button_more" class="btn btn-outline-secondary">더보기</button>
+		</div>
+		
+		<p>의류/하네스</p>
+		<span>FASHION</span>
+		<div id="item_new">
+			<div class="d-flex mb-4">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 이비야야 대형견유모차 젠틀펫왜건 아미그린 25kg 탑승
+						<hr/>
+						<span>280,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<button id="button_more" class="btn btn-outline-secondary">더보기</button>
+		</div>
+		
+		<p>이동/산책</p>
+		<span>WALK</span>
+		<div id="item_new">
+			<div class="d-flex mb-4">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 이비야야 대형견유모차 젠틀펫왜건 아미그린 25kg 탑승
+						<hr/>
+						<span>280,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<button id="button_more" class="btn btn-outline-secondary">더보기</button>
+		</div>
+		
+		<p>사료/간식</p>
+		<span>FOOD</span>
+		<div id="item_new">
+			<div class="d-flex mb-4">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 이비야야 대형견유모차 젠틀펫왜건 아미그린 25kg 탑승
+						<hr/>
+						<span>280,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+				<div>
+					<div id="item_box">
+						<a href="#">
+						</a>
+					</div>
+					<div id="item_text">
+						제라미펫 르네 강아지 고양이 이동가방 숄더백
+						<hr/>
+						<span>39,000원</span>
+					</div>
+				</div>
+			</div>
+			<button id="button_more" class="btn btn-outline-secondary">더보기</button>
+		</div>
+		
+	</div>
+</div>
+
+<!-- BODY - BOTTOM -->
+<div id="body_bottom" class="container-fluid mb-5">
+	<div class="d-flex">
+		<div>
+			<span style="display:block;">
+				<strong style="font-size:1.5em;">이벤트</strong>&nbsp;EVENT
+			</span>
+			<div style="width:100%; height:90%; border-radius:20px; background-color:black;">
+			</div>
+		</div>
+		<div>
+			<div class="d-flex" style="justify-content:space-between;">
+				<div>
+					<strong style="font-size:1.5em;">상품후기</strong>&nbsp;REVIEW
+				</div>
+				<div>
+					<button class="btn btn-outline-dark" style="border:0;">더보기</button>
+				</div>
+			</div>
+			<hr style="border:0; height:1px; background:black;"/>
+			<div style="width:100%; height:89%; padding:0 0;" class="d-flex flex-column">
+				<div id="review" class="m-auto">
+					<div id="review_img">
+					</div>
+				</div>
+				<div id="review" class="m-auto">
+					<div id="review_img">
+					</div>
+				</div>
+				
+				<div id="review" class="m-auto">
+					<div id="review_img">
+					</div>
+				</div>
+				
+				<div id="review" class="m-auto">
+					<div id="review_img">
+					</div>
+				</div>
+			</div>
+			<hr style="border:0; height:1px; background:black;"/>
+		</div>
+	</div>
+</div>
+
+<!-- BODY - BOTTOM - PROMOTION -->
+<div id="wrap">
+	<div id="body_bottom_promotion" class="d-flex justify-content-between mb-5" style="width:100%; height:120px;">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer" class="container-fluid">
+	<div id="wrap" class="d-flex">
+		<div style="width:60%; height:455px; padding:50px 0;">
+			<h3>ACCOUNT INFO</h3>
+			<div>
+				<img src="../images/bank_nh.png" alt="농협은행" style="padding:0 0 8px 0;"/>&nbsp;&nbsp;
+				<h3 style="display:inline;"><strong>123-4567-8912-34</strong></h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="font-size:0.9em;">예금주 : 홍길동-캣츠앤도그</span>
+			</div>
+			<hr style="margin:0 0 20px;"/>
+			<span style="font-size:0.8em;">
+				<strong>상호</strong> : 캣츠앤도그<br/>
+				<strong>대표이사</strong> : 홍길동 <strong>주소</strong> : 수원시 권선구 탑동로57번길 20-1, 201호 (탑동 752-3)<br/>
+				<strong>사업자등록번호</strong> : 123-45-67890 <strong>통신판매업신고</strong> : 1234-홍길동-5678<br/>
+				<strong>고객센터주문상담</strong> : 12-345-6789 <strong>FAX</strong> : 12-3456-7890 <strong>EMAIL</strong> : example@naver.com<br/>
+				<strong>분쟁조정기관표시</strong> : 전자거래분쟁중재위원회 <strong>개인정보관리 책임자</strong> : 홍길동<br/>
+				<strong>호스팅 제공자</strong> : (주)홍길동<br/><br/><br/>
+				<strong>Copyright 2021 © 캣츠앤도그 ALL Rights Reserved.</strong>
+			</span>
+		</div>
+		<div style="width:40%; height:455px; padding:50px;">
+			<h3><strong>고객센터</strong></h3>
+			<h2><strong>12-345-6789</strong></h2>
+			<span style="font-size:0.8em">
+				<strong>업무시간</strong> :<br/>
+				평일 오전 10:00 ~ 18:30분 (토,일요일,공휴일은 휴무)<br/>
+				당일 발송가능시간: pm 16:30분 까지 입금확인건 당일발송<br/><br/>
+				<strong>배송안내</strong><br/>
+				고객님께 도착하는 배송은 택배사 사정에따라 2~4일정도걸립니다<br/>
+				(섬,도선지역은 3~5일정도 걸릴수있음)<br/><br/>
+				<strong>매장 방문수령</strong><br/>
+				수원시 권선구 탑동로57번길 20-1, 201호 (탑동 752-3)
+			</span>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
