@@ -38,7 +38,7 @@
     <%@ include file="../header.jsp" %>
     
     <div id="main">
-	    <div style="margin:20px 0 10px; text-align:center;">
+	    <div style="margin:30px 0 10px; text-align:center;">
 	    	<h3>MY PAGE</h3>
 	    	<sec:authorize access="isAuthenticated()">
 				<sec:authentication property="principal.username" var="username"/>
